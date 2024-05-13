@@ -17,5 +17,13 @@ RSpec.describe StringCalculator do
     it 'allows new lines between numbers' do
       expect(StringCalculator.add("1\n2,3")).to eq(6)
     end
+
+    it 'allows new lines between numbers' do
+      expect(StringCalculator.add("//;\n2;3;4\n5")).to eq(14)
+    end
+
+    it 'should raise error' do
+      expect { StringCalculator.add('4,5,\n6') }.to raise_error(ArgumentError, "Invalid input")
+    end
   end
 end
