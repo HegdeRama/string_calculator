@@ -3,10 +3,23 @@ class StringCalculator
     # Return 0 for empty string
     return 0 if numbers.empty?
 
-    # Split numbers based on default delimiters
     num_list = get_numbers(numbers)
-    # Convert strings to integers and sum them
-    num_list.sum(&:to_i)
+    sum = 0
+    negative_numbers = []
+
+    num_list.each do |n|
+      number = n.to_i  # Convert n to integer
+
+      if number < 0
+        negative_numbers << number
+      else
+        sum += number
+      end
+    end
+
+    raise ArgumentError, "Negatives not allowed: #{negative_numbers.join(', ')}" unless negative_numbers.empty?
+
+    sum
   end
 
   private

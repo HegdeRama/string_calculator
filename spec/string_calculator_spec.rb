@@ -25,5 +25,9 @@ RSpec.describe StringCalculator do
     it 'should raise error' do
       expect { StringCalculator.add('4,5,\n6') }.to raise_error(ArgumentError, "Invalid input")
     end
+
+    it 'should raise error' do
+      expect { StringCalculator.add('-1,2') }.to raise_error(ArgumentError, "Negatives not allowed: -1")
+    end
   end
 end
